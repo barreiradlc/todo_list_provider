@@ -12,7 +12,7 @@ class AppModule extends StatelessWidget {
       providers: [
         Provider(create: (_) => SqliteConnectionFactory(), lazy: false),
       ],
-      child: const AppWidget(),
+      child: AppWidget(),
     );
   }
 }
