@@ -1,13 +1,25 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
+import 'package:todo_list_provider/app/core/widget/todo_list_field.dart';
 import 'package:todo_list_provider/app/core/widget/todo_list_logo.dart';
+import 'package:window_manager/window_manager.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
+  
+
 
   @override
   Widget build(BuildContext context) {
+
+    if (Platform.isWindows) {
+      WindowManager.instance.setMinimumSize(const Size(1200, 600));
+      WindowManager.instance.setMaximumSize(const Size(1200, 600));
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
@@ -33,9 +45,14 @@ class LoginPage extends StatelessWidget {
                       child: Form(
                         child: Column(
                           children: [
-                            TextFormField(),
+                            TodoListField(
+                              label: 'Email',
+                            ),
                             SizedBox(height: 20),
-                            TextFormField(),
+                            TodoListField(
+                              label: 'Senha',
+                              obscureText: true,
+                            ),
                             SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
