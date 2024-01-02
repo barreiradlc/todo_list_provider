@@ -16,8 +16,11 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     if (Platform.isWindows) {
-      WindowManager.instance.setMinimumSize(const Size(1200, 600));
-      WindowManager.instance.setMaximumSize(const Size(1200, 600));
+      WindowManager.instance.setSize(const Size(350, 700));
+    }
+
+    goToRegister() {
+      Navigator.of(context).pushNamed('/register');
     }
 
     return Scaffold(
@@ -111,7 +114,7 @@ class LoginPage extends StatelessWidget {
                                 Text('Não tem conta?'),
                                 TextButton(
                                   child: Text('Cadastre-se'),
-                                  onPressed: () {},
+                                  onPressed: goToRegister,
                                 )
                               ],
                             )
